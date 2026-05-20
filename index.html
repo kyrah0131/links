@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#e8dfd2" />
+  <title>Kyra Consulting · Links</title>
+  <meta name="description" content="關注人生與職涯中的轉折時刻" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+TC:wght@300;400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* 大地色系:米白、奶茶、暖灰、霧藍綠 */
+      --bg: #ede5d6;
+      --bg-deep: #d9cdb5;
+      --paper: #f5efe2;
+      --ink: #2a2620;
+      --ink-soft: #5a5248;
+      --muted: #8a7f70;
+      --accent: #7a8470;        /* 霧綠 — 像風景畫的草地 */
+      --accent-warm: #b8835a;   /* 暖橘 — 像夕陽 */
+      --card-border: rgba(42, 38, 32, 0.12);
+      --card-border-strong: rgba(42, 38, 32, 0.22);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body { overscroll-behavior-y: none; }
+
+    body {
+      font-family: 'Noto Serif TC', 'Cormorant Garamond', serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: env(safe-area-inset-top) 1.5rem env(safe-area-inset-bottom);
+      position: relative;
+      overflow-x: hidden;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    /* 風景畫感的漸層背景 */
+    .landscape {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 30% 20%, rgba(184, 131, 90, 0.18), transparent 60%),
+        radial-gradient(ellipse 60% 40% at 70% 70%, rgba(122, 132, 112, 0.22), transparent 60%),
+        radial-gradient(ellipse 100% 60% at 50% 100%, rgba(217, 205, 181, 0.6), transparent 70%);
+    }
+
+    /* 紙張紋理 */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.25 0 0 0 0 0.18 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    /* 水平線裝飾 — 像地平線 */
+    .horizon {
+      position: fixed;
+      top: 60%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--card-border-strong) 20%, var(--card-border-strong) 80%, transparent);
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 440px;
+      margin: 0 auto;
+      padding-top: 2.5rem;
+    }
+
+    /* ===== Header ===== */
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.1s forwards;
+    }
+
+    .label {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.25rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent-warm);
+    }
+
+    .subtitle {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      margin-top: 1.25rem;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+    }
+
+    .cities {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+
+    .cities .dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ===== Section divider ===== */
+    .section-label {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin: 2rem 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--card-border);
+    }
+
+    /* ===== Links ===== */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      background: var(--paper);
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--card-border);
+      border-radius: 2px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeUp 0.7s ease forwards;
+      transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .link:nth-child(1) { animation-delay: 0.3s; }
+    .link:nth-child(2) { animation-delay: 0.38s; }
+    .link:nth-child(3) { animation-delay: 0.46s; }
+    .link:nth-child(4) { animation-delay: 0.54s; }
+    .link:nth-child(5) { animation-delay: 0.62s; }
+    .link:nth-child(6) { animation-delay: 0.70s; }
+    .link:nth-child(7) { animation-delay: 0.78s; }
+
+    .link.pressing {
+      transform: scale(0.98);
+      background: var(--bg-deep);
+      border-color: var(--card-border-strong);
+    }
+
+    /* ===== CTA 獨立區塊 — 主要行動按鈕 ===== */
+    .cta-block {
+      margin-bottom: 0.5rem;
+      perspective: 1000px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .link-cta {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid transparent;
+      padding: 1.25rem 3.5rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      width: auto;
+      max-width: 340px;
+    }
+
+    /* 呼吸光暈 — 從卡片中央溫柔擴散 */
+    .link-cta .glow-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, rgba(184, 131, 90, 0.22), transparent 65%);
+      opacity: 0;
+      animation: breathe 3.5s ease-in-out infinite;
+      z-index: 1;
+    }
+    @keyframes breathe {
+      0%, 100% { opacity: 0.5; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    /* 邊框流動 — 暖橘色光點沿著邊緣繞行 */
+    .link-cta .border-flow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .link-cta .border-flow::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 280deg,
+        var(--accent-warm) 340deg,
+        rgba(184, 131, 90, 0.6) 355deg,
+        transparent 360deg
+      );
+      animation: border-rotate 5s linear infinite;
+    }
+    .link-cta .border-flow::after {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      background: var(--bg);
+      border-radius: 2px;
+    }
+    @keyframes border-rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    /* 文字本身 — 置中排列 */
+    .link-cta {
+      justify-content: center;
+      gap: 0.85rem;
+    }
+    .link-cta .link-text {
+      position: relative;
+      z-index: 2;
+      font-weight: 500;
+      flex: 0 0 auto;
+    }
+    .link-cta .link-icon {
+      color: var(--accent-warm);
+      width: 18px;
+      height: 18px;
+      position: relative;
+      z-index: 2;
+    }
+    .link-cta .link-arrow {
+      color: var(--accent-warm);
+      font-size: 1.2rem;
+      font-style: italic;
+      position: relative;
+      z-index: 2;
+      flex: 0 0 auto;
+    }
+
+    /* 互動 — hover / press */
+    .link-cta:hover {
+      transform: translateY(-2px);
+    }
+    .link-cta:hover .glow-bg {
+      animation-duration: 1.8s;
+    }
+    .link-cta:hover .border-flow::before {
+      animation-duration: 2.5s;
+    }
+    .link-cta.pressing {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* 取消左側裝飾線(CTA 用其他方式呈現) */
+    .link-cta::after { display: none; }
+    .link-cta::before { display: none; }
+
+    /* CTA 長按進度條 */
+    .link-cta .progress-bar {
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 1.5px;
+      width: 0;
+      background: var(--accent-warm);
+      transition: width 0.05s linear;
+      z-index: 3;
+    }
+    .link-cta.long-pressing .progress-bar {
+      width: 100%;
+      transition: width 0.7s linear;
+    }
+
+    /* 左側裝飾線 */
+    .link::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: center;
+      transition: transform 0.3s ease;
+    }
+    .link.pressing::after,
+    .link:hover::after {
+      transform: scaleY(1);
+    }
+
+    /* 漣漪 */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--ink);
+      opacity: 0.06;
+      transform: scale(0);
+      animation: ripple 0.7s ease-out;
+      pointer-events: none;
+    }
+    @keyframes ripple {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* 長按進度 */
+    .link::before {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 1.5px;
+      width: 0;
+      background: var(--accent-warm);
+      transition: width 0.05s linear;
+    }
+    .link.long-pressing::before {
+      width: 100%;
+      transition: width 0.7s linear;
+    }
+
+    .link-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--accent);
+      stroke-width: 1.5;
+    }
+
+    .link-text {
+      flex: 1;
+      letter-spacing: 0.01em;
+    }
+
+    .link-meta {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .link-arrow {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--muted);
+      font-size: 1.1rem;
+      font-style: italic;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .link.pressing .link-arrow,
+    .link:hover .link-arrow {
+      transform: translateX(4px);
+      color: var(--accent-warm);
+    }
+
+    /* ===== Quote ===== */
+    .quote {
+      margin: 3rem 0 2rem;
+      padding: 1.5rem 1.25rem;
+      border-left: 2px solid var(--accent);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      opacity: 0;
+      animation: fadeUp 1s ease 0.9s forwards;
+    }
+    .quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: 'Geist Mono', monospace;
+      font-style: normal;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      text-align: center;
+      margin: 2rem 0 1.5rem;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 1.1s forwards;
+    }
+    .footer .divider {
+      margin: 0.5rem 0;
+      opacity: 0.5;
+    }
+
+    /* ===== Toast ===== */
+    .toast {
+      position: fixed;
+      bottom: calc(2rem + env(safe-area-inset-bottom));
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--ink);
+      color: var(--bg);
+      padding: 0.75rem 1.75rem;
+      border-radius: 2px;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      z-index: 100;
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      pointer-events: none;
+      box-shadow: 0 8px 32px rgba(42,38,32,0.15);
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 768px) {
+      .container { padding-top: 4rem; }
+      h1 { font-size: 3.75rem; }
+      .link:hover {
+        background: var(--bg-deep);
+        border-color: var(--card-border-strong);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="landscape"></div>
+  <div class="horizon"></div>
+
+  <main class="container">
+    <header class="header">
+      <div class="label">職涯諮詢 ｜ 跨國轉職 ｜ Mentoring</div>
+      <h1>Kyra<br>Consulting</h1>
+      <p class="subtitle">
+        關注人生與職涯中的轉折時刻。<br>
+        在選擇與混亂之間,一起重新看清方向。
+      </p>
+      <div class="cities">
+        <span>TAIPEI</span>
+        <span class="dot"></span>
+        <span>TORONTO</span>
+      </div>
+    </header>
+
+    <nav class="links cta-block">
+      <a class="link link-cta" href="https://calendly.com/kyrah0131" target="_blank" rel="noopener" data-copy="https://calendly.com/kyrah0131">
+        <span class="border-flow"></span>
+        <span class="glow-bg"></span>
+        <span class="progress-bar"></span>
+        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="link-text">立即預約</span>
+        <span class="link-arrow">→</span>
+      </a>
+    </nav>
+
+    <div class="section-label">Main</div>
+
+    <nav class="links">
+      <a class="link" href="https://www.kyra.consulting" data-copy="https://www.kyra.consulting">
+        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="link-text">Home — 官方網站</span>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link" href="https://www.kyra.consulting/about" data-copy="https://www.kyra.consulting/about">
+        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        <span class="link-text">About — 關於我</span>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link" href="https://www.kyra.consulting/services-4" data-copy="https://www.kyra.consulting/services-4">
+        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l5 5 4-4 7 7"/><polyline points="14 4 20 4 20 10"/></svg>
+        <span class="link-text">Pathways — 諮詢服務</span>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link" href="https://www.kyra.consulting/my-blog" data-copy="https://www.kyra.consulting/my-blog">
+        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <span class="link-text">Journal — 轉折故事</span>
+        <span class="link-arrow">→</span>
+      </a>
+    </nav>
+
+    <div class="section-label">Writings & Social</div>
+
+    <nav class="links">
+      <a class="link" href="https://kyradandan.substack.com" target="_blank" rel="noopener" data-copy="https://kyradandan.substack.com">
+        <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+        <span class="link-text">Substack</span>
+        <span class="link-meta">電子報免費看</span>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link" href="https://www.threads.com/@kyra_dandan" target="_blank" rel="noopener" data-copy="https://www.threads.com/@kyra_dandan">
+        <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg>
+        <span class="link-text">Threads</span>
+        <span class="link-meta">@kyra_dandan</span>
+        <span class="link-arrow">→</span>
+      </a>
+    </nav>
+
+    <div class="quote">
+      "Kyra 具備非常扎實且細膩的專業度,能清楚拆解學員的優勢與盲點,協助對方重新梳理經歷、定位價值。"
+      <cite>— Joyce, Taipei</cite>
+    </div>
+
+    <footer class="footer">
+      © 2026 Kyra Huang
+      <div class="divider">✦</div>
+      長按卡片可複製連結
+    </footer>
+  </main>
+
+  <div class="toast" id="toast">已複製連結</div>
+
+  <script>
+    // Toast
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    function vibrate(ms) {
+      if (navigator.vibrate) navigator.vibrate(ms);
+    }
+
+    // 連結互動
+    const links = document.querySelectorAll('.link');
+    links.forEach(link => {
+      let pressTimer;
+      let longPressed = false;
+
+      const addRipple = (e) => {
+        const rect = link.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const size = Math.max(rect.width, rect.height);
+        const x = (e.clientX || (e.touches && e.touches[0].clientX) || rect.left + rect.width/2) - rect.left - size/2;
+        const y = (e.clientY || (e.touches && e.touches[0].clientY) || rect.top + rect.height/2) - rect.top - size/2;
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        link.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 700);
+      };
+
+      const onPressStart = (e) => {
+        longPressed = false;
+        link.classList.add('pressing', 'long-pressing');
+        vibrate(8);
+        addRipple(e);
+
+        pressTimer = setTimeout(() => {
+          longPressed = true;
+          const copyText = link.dataset.copy;
+          if (copyText && navigator.clipboard) {
+            navigator.clipboard.writeText(copyText).then(() => {
+              showToast('✓ 已複製連結');
+              vibrate([30, 50, 30]);
+            }).catch(() => {
+              showToast('複製失敗');
+            });
+          }
+        }, 700);
+      };
+
+      const onPressEnd = (e) => {
+        link.classList.remove('pressing', 'long-pressing');
+        clearTimeout(pressTimer);
+        if (longPressed && e) e.preventDefault();
+      };
+
+      link.addEventListener('touchstart', onPressStart, { passive: true });
+      link.addEventListener('touchend', onPressEnd);
+      link.addEventListener('touchcancel', onPressEnd);
+      link.addEventListener('mousedown', onPressStart);
+      link.addEventListener('mouseup', onPressEnd);
+      link.addEventListener('mouseleave', onPressEnd);
+
+      link.addEventListener('click', (e) => {
+        if (longPressed) {
+          e.preventDefault();
+          longPressed = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

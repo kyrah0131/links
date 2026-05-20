@@ -448,10 +448,53 @@
       text-transform: uppercase;
     }
 
+    /* ===== Mini icon links ===== */
+    .mini-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.75rem;
+      margin: 2.5rem 0 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 1s forwards;
+    }
+
+    .mini-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .mini-link svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .mini-label {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .mini-link:hover,
+    .mini-link.pressing {
+      color: var(--accent-warm);
+    }
+    .mini-link:hover svg {
+      transform: translateY(-2px);
+    }
+
     /* ===== Footer ===== */
     .footer {
       text-align: center;
-      margin: 2rem 0 1.5rem;
+      margin: 1.25rem 0 1.5rem;
       font-family: 'Geist Mono', monospace;
       font-size: 0.65rem;
       color: var(--muted);
@@ -590,6 +633,17 @@
     <div class="quote">
       "Kyra 具備非常扎實且細膩的專業度,能清楚拆解學員的優勢與盲點,協助對方重新梳理經歷、定位價值。"
       <cite>— Joyce, Taipei</cite>
+    </div>
+
+    <div class="mini-links">
+      <a href="https://medium.com/@kyrah0131" target="_blank" rel="noopener" class="mini-link" aria-label="Medium — 數位遊牧生活">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        <span class="mini-label">Medium · 數位遊牧生活</span>
+      </a>
+      <a href="https://vocus.cc/salon/kyradreamlog" target="_blank" rel="noopener" class="mini-link" aria-label="Vocus — 夢境筆記">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span class="mini-label">Vocus · 夢境筆記</span>
+      </a>
     </div>
 
     <footer class="footer">
